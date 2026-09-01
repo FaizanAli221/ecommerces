@@ -1,0 +1,18 @@
+{
+  "name": "ecommerce-app-monorepo",
+  "version": "1.0.0",
+  "description": "Full-stack E-commerce Application (Backend, Frontend, Admin)",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install && npm --prefix admin install",
+    "dev:backend": "npm --prefix backend run server",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:admin": "npm --prefix admin run dev",
+    "start:backend": "npm --prefix backend start",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:admin": "npm --prefix admin run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
