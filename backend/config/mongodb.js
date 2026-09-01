@@ -1,4 +1,12 @@
 import mongoose from "mongoose";
+import dns from "dns";
+
+// Ensure MongoDB Atlas SRV records resolve reliably across all networks / ISPs
+try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch {
+    // Ignore if not supported in certain environments
+}
 
 const connectDB = async () => {
     mongoose.connection.on('connected', () => {
