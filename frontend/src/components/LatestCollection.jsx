@@ -16,9 +16,9 @@ const LatestCollection = () => {
   return (
     <div className='my-10'>
         <div className='text-center py-8 text-3xl'>
-            <Title text1={'LATEST'} text2={'COLLECTIONS'}/>
-            <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem Ipsum be the greatest ever in every time.</p>
+            <Title text1={'LATEST'} text2={'ARRIVALS'}/>
+            <p className='w-3/4 m-auto text-xs sm:text-sm text-gray-500 max-w-xl'>
+            Discover our newest seasonal drop designed for effortless elegance, versatile styling, and enduring quality.</p>
         </div>
 
       {/* Rendering Products */}

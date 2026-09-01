@@ -9,18 +9,18 @@ const BestSeller = () => {
     const [bestSeller, setBestSeller] = useState([]);
 
     useEffect(() => {
-  if (products.length) {
+  if (products && products.length) {
     const bestProduct = products.filter((item) => item.bestseller);
-    setBestSeller(bestProduct.slice(0, 5));
+    setBestSeller(bestProduct.slice(0, 10));
   }
 }, [products]);
 
   return (
     <div className='my-10'>
         <div className='text-center text-3xl py-8'>
-            <Title text1={'BEST'} text2={'SELLERS'}/>
-            <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem Ipsum be the greatest ever in every time.</p>
+            <Title text1={'TOP'} text2={'BESTSELLERS'}/>
+            <p className='w-3/4 m-auto text-xs sm:text-sm text-gray-500 max-w-xl'>
+            Our most sought-after essentials loved by thousands of customers worldwide for unmatched comfort and style.</p>
         </div>
 
        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
