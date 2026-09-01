@@ -8,10 +8,12 @@ try {
     // Ignore if not supported in certain environments
 }
 
+let isConnected = false;
+
 const connectDB = async () => {
-    mongoose.connection.on('connected', () => {
-        console.log("DB Connected");
-    });
+    if (isConnected || mongoose.connection.readyState === 1) {
+        return;
+    }
 
     const uri = process.env.MONGODB_URI;
     if (!uri) {
@@ -19,10 +21,14 @@ const connectDB = async () => {
         return;
     }
 
-    if (uri.includes('?') || uri.endsWith('/e-commerce')) {
-        await mongoose.connect(uri);
-    } else {
-        await mongoose.connect(`${uri}/e-commerce`);
+    try {
+        const connectionString = (uri.includes('?') || uri.endsWith('/e-commerce')) ? uri : `${uri}/e-commerce`;
+        const db = await mongoose.connect(connectionString);
+        isConnected = db.connections[0].readyState === 1;
+        console.log("DB Connected");
+    } catch (error) {
+        console.error("DB Connection Failed:", error.message);
+        throw error;
     }
 };
 

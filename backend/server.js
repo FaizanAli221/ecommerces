@@ -18,6 +18,17 @@ connectCloudinary()
 app.use(express.json())
 app.use(cors())
 
+// Ensure DB is connected for serverless invocations
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error("DB connection error:", error);
+        res.status(500).json({ success: false, message: "Database connection error: " + error.message });
+    }
+});
+
 // api endpoints
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
